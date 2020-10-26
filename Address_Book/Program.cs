@@ -19,6 +19,7 @@ namespace Address_Book
                 Console.WriteLine("1.Add Details");
                 Console.WriteLine("2.Display Details");
                 Console.WriteLine("3.Edit Details");
+                Console.WriteLine("4.Delete Details");
 
                 string choice = Console.ReadLine();
                 int ch = Convert.ToInt32(choice);
@@ -32,9 +33,14 @@ namespace Address_Book
                         details.Display();
                         break;
                     case 3:
-                        Console.WriteLine("Enter firstName");
+                        Console.WriteLine("Enter First Name:");
                         string name = Console.ReadLine();
                         details.Edit(name);
+                        break;
+                    case 4:
+                        Console.WriteLine("Enter First Name:");
+                        string nameForDeletion = Console.ReadLine();
+                        details.Delete(nameForDeletion);
                         break;
                 }
             }

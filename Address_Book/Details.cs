@@ -22,5 +22,10 @@ namespace Address_Book
         /// <param name="firstName">first name.</param>
         public void Edit(string firstName);
 
+        /// <summary>
+        /// Delete method.
+        /// </summary>
+        /// <param name="firstName">first name.</param>
+        public void Delete(string firstName);
     }
 }

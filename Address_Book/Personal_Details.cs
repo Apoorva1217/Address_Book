@@ -39,7 +39,7 @@ namespace Address_Book
 
         public override string ToString()
         {
-            return "[FirstName=" + this.firstName + ", LastName=" + this.lastName + ", Address=" + this.address + ", City=" + this.city + ", State=" + this.state + ", ZipCode=" + this.zipCode + ", PhoneNumber=" + this.phoneNumber + ", EmailID=" + this.emailID + "]" + "\n";
+            return "[FirstName= " + this.firstName + ", LastName= " + this.lastName + ", Address= " + this.address + ", City= " + this.city + ", State= " + this.state + ", ZipCode= " + this.zipCode + ", PhoneNumber= " + this.phoneNumber + ", EmailID=" + this.emailID + "]" + "\n";
         }
     }
 }

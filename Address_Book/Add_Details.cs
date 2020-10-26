@@ -21,7 +21,7 @@ namespace Address_Book
         /// </summary>
         public void Add()
         {
-            Console.WriteLine("Enter first name");
+            Console.WriteLine("Enter First Name:");
             string firstName = Console.ReadLine();
             for (int i = 0; i < this.list.Count; i++)
             {
@@ -31,19 +31,19 @@ namespace Address_Book
                 }
             }
 
-            Console.WriteLine("Enter last name");
+            Console.WriteLine("Enter Last Name:");
             string lastName = Console.ReadLine();
 
-            Console.WriteLine("Enter address");
+            Console.WriteLine("Enter Address:");
             string address = Console.ReadLine();
 
-            Console.WriteLine("Enter city");
+            Console.WriteLine("Enter City:");
             string city = Console.ReadLine();
 
-            Console.WriteLine("Enter state");
+            Console.WriteLine("Enter State:");
             string state = Console.ReadLine();
 
-            Console.WriteLine("Enter Zip Code");
+            Console.WriteLine("Enter Zip Code:");
             int zipCode = Convert.ToInt32(Console.ReadLine());
 
             Console.WriteLine("Enter phoneNumber");
@@ -96,35 +96,35 @@ namespace Address_Book
                         switch (ch)
                         {
                             case 1:
-                                Console.WriteLine("enter new address");
+                                Console.WriteLine("Enter new Address:");
                                 string address = Console.ReadLine();
                                 person.Address = address;
                                 break;
                             case 2:
-                                Console.WriteLine("enter new city");
+                                Console.WriteLine("Enter new City:");
                                 string city = Console.ReadLine();
                                 person.City = city;
                                 break;
                             case 3:
-                                Console.WriteLine("enter new state");
+                                Console.WriteLine("Enter new State:");
                                 string state = Console.ReadLine();
                                 person.State = state;
                                 break;
 
                             case 4:
-                                Console.WriteLine("enter new zipCode");
+                                Console.WriteLine("Enter new ZipCode:");
                                 int zipCode =Convert.ToInt32(Console.ReadLine());
                                 person.ZipCode = zipCode;
                                 break;
 
                             case 5:
-                                Console.WriteLine("enter new phoneNumber");
+                                Console.WriteLine("Enter new Phone Number:");
                                 long phoneNumber =Convert.ToInt64(Console.ReadLine());
                                 person.PhoneNumber = phoneNumber;
                                 break;
 
                             case 6:
-                                Console.WriteLine("enter new Email ID");
+                                Console.WriteLine("Enter new Email ID:");
                                 string emailID = Console.ReadLine();
                                 person.EmailID = emailID;
                                 break;
@@ -136,6 +136,21 @@ namespace Address_Book
                     }
                 }
             }
+        }
+        /// <summary>
+        /// Delete method.
+        /// </summary>
+        /// <param name="firstName">first name.</param>
+        public void Delete(string firstName)
+        {
+            for (int i = 0; i < this.list.Count; i++)
+            {
+                if (this.list[i].FirstName.Equals(firstName))
+                {
+                    this.list[i] = null;
+                }
+            }
+            Console.WriteLine("Your expected entry is deleted from records!");
         }
 
     }
