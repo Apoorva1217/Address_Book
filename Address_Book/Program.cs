@@ -2,7 +2,7 @@
 
 namespace Address_Book
 {
-    class Program
+    public class Program
     {
         /// <summary>
         /// Address Book
@@ -10,8 +10,34 @@ namespace Address_Book
         /// <param name="args"></param>
         static void Main(String[] args)
         {
-            Console.WriteLine("Welcome to Address Book Program!");
-        }
-	}
-}
+            Details details = new Add_Details();
+            bool check = true;
+            while (check == true)
+            {
+                Console.WriteLine("---Welcome to Address Book Program!---");
+                Console.WriteLine("***Enter Your Choice***");
+                Console.WriteLine("1.Add Details");
+                Console.WriteLine("2.Display Details");
+                Console.WriteLine("3.Edit Details");
 
+                string choice = Console.ReadLine();
+                int ch = Convert.ToInt32(choice);
+
+                switch (ch)
+                {
+                    case 1:
+                        details.Add();
+                        break;
+                    case 2:
+                        details.Display();
+                        break;
+                    case 3:
+                        Console.WriteLine("Enter firstName");
+                        string name = Console.ReadLine();
+                        details.Edit(name);
+                        break;
+                }
+            }
+        }
+    }
+}

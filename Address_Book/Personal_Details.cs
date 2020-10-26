@@ -23,14 +23,14 @@ namespace Address_Book
             this.address = address;
             this.city = city;
             this.state = state;
-            this.ZipCode = zipCode;
-            this.PhoneNumber = phoneNumber;
+            this.zipCode = zipCode;
+            this.phoneNumber = phoneNumber;
             this.emailID = emailID;
         }
 
         public string FirstName { get => this.firstName; set => this.firstName = value; }
         public string LastName { get => this.lastName; set => this.lastName = value; }
-        public string Adderss { get => this.address; set => this.address = value; }
+        public string Address { get => this.address; set => this.address = value; }
         public string City { get => this.city; set => this.city = value; }
         public string State { get => this.state; set => this.state = value; }
         public int ZipCode { get => this.zipCode; set => this.zipCode = value; }
