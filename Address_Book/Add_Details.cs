@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Address_Book
 {
@@ -21,8 +22,13 @@ namespace Address_Book
         /// </summary>
         public void Add()
         {
+            
             Console.WriteLine("Enter First Name:");
             string firstName = Console.ReadLine();
+
+            if (!Regex.Match(firstName, "^[A-Z][a-z]{2,}$").Success)
+            Console.WriteLine("First letter should be capital \n");
+
             for (int i = 0; i < this.list.Count; i++)
             {
                 if (this.list[i].FirstName.Equals(firstName))
@@ -30,9 +36,11 @@ namespace Address_Book
                     Console.WriteLine("You entered the duplicate name...");
                 }
             }
-
+            
             Console.WriteLine("Enter Last Name:");
             string lastName = Console.ReadLine();
+            if (!Regex.Match(lastName, "^[A-Z][a-z]{2,}$").Success)
+                Console.WriteLine("First letter should be capital \n");
 
             Console.WriteLine("Enter Address:");
             string address = Console.ReadLine();
@@ -48,16 +56,11 @@ namespace Address_Book
 
             Console.WriteLine("Enter phoneNumber");
             long phoneNumber = Convert.ToInt64(Console.ReadLine());
-            for (int i = 0; i < this.list.Count; i++)
-            {
-                if (this.list[i].PhoneNumber.Equals(phoneNumber))
-                {
-                    Console.WriteLine("You entered the duplicate phone number...");
-                }
-            }
 
             Console.WriteLine("Enter EmailID");
             string emailID = Console.ReadLine();
+            if (!Regex.Match(emailID, "^[0-9a-zA-Z]+([._+-][0-9a-zA-Z]+)*@[0-9a-zA-Z]+[.]+([a-zA-Z]{2,4})+[.]*([a-zA-Z]{2})*$").Success)
+                Console.WriteLine("Invalid Email ID \n");
 
             Console.WriteLine("Your details are Added Successfully...");
 

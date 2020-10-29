@@ -20,6 +20,7 @@ namespace Address_Book
                 Console.WriteLine("2.Display Details");
                 Console.WriteLine("3.Edit Details");
                 Console.WriteLine("4.Delete Details");
+                Console.WriteLine("5.Exit");
 
                 string choice = Console.ReadLine();
                 int ch = Convert.ToInt32(choice);
@@ -42,6 +43,8 @@ namespace Address_Book
                         string nameForDeletion = Console.ReadLine();
                         details.Delete(nameForDeletion);
                         break;
+                    case 5:
+                        return;
                 }
             }
         }
