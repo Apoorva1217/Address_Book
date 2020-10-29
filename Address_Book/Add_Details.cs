@@ -34,6 +34,7 @@ namespace Address_Book
                 if (this.list[i].FirstName.Equals(firstName))
                 {
                     Console.WriteLine("You entered the duplicate name...");
+                    return;
                 }
             }
             
