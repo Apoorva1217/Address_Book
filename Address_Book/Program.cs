@@ -21,7 +21,8 @@ namespace Address_Book
                 Console.WriteLine("3.Edit Details");
                 Console.WriteLine("4.Delete Details");
                 Console.WriteLine("5.Search Details using City or State");
-                Console.WriteLine("6.Exit");
+                Console.WriteLine("6.View Person by City or State");
+                Console.WriteLine("7.Exit");
 
                 string choice = Console.ReadLine();
                 int ch = Convert.ToInt32(choice);
@@ -48,6 +49,9 @@ namespace Address_Book
                         details.Search();
                         break;
                     case 6:
+                        details.View();
+                        break;
+                    case 7:
                         return;
                 }
             }
