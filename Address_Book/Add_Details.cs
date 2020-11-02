@@ -29,11 +29,12 @@ namespace Address_Book
             if (!Regex.Match(firstName, "^[A-Z][a-z]{2,}$").Success)
             Console.WriteLine("First letter should be capital \n");
 
+            ///No Duplicate Entries are Allowed!
             for (int i = 0; i < this.list.Count; i++)
             {
                 if (this.list[i].FirstName.Equals(firstName))
                 {
-                    Console.WriteLine("You entered the duplicate name...");
+                    Console.WriteLine("You entered the Duplicate Name...");
                     return;
                 }
             }
