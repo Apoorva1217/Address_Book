@@ -27,5 +27,10 @@ namespace Address_Book
         /// </summary>
         /// <param name="firstName">first name.</param>
         public void Delete(string firstName);
+
+        /// <summary>
+        /// Search Method.
+        /// </summary>
+        public void Search();
     }
 }

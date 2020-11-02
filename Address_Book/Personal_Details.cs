@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Address_Book
 {
-    class Personal_Details
+    public class Personal_Details
     {
         private string firstName;
         private string lastName;

@@ -158,5 +158,37 @@ namespace Address_Book
             Console.WriteLine("Your expected entry is deleted from records!");
         }
 
+        /// <summary>
+        /// Search name by City or State
+        /// </summary>
+        public void Search()
+        {
+            Console.WriteLine("Enter your choice for searching: ");
+            Console.WriteLine("1. City 2. State");
+            String choice = Console.ReadLine();
+            int choice1 = Convert.ToInt32(choice);
+            switch (choice1)
+            {
+                case 1:
+                    Console.WriteLine("Enter your First Name:");
+                    String NameToSearchInCity = Console.ReadLine();
+                    for (int i = 0; i < list.Count; i++)
+                    {
+                        if (list[i].FirstName.Equals(NameToSearchInCity))
+                            Console.WriteLine(list[i].City);
+                    }
+                    break;
+                case 2:
+                    Console.WriteLine("Enter your First Name:");
+                    String nameToSearchInState = Console.ReadLine();
+                    for (int i = 0; i < list.Count; i++)
+                    {
+                        if (list[i].FirstName.Equals(nameToSearchInState))
+                            Console.WriteLine(list[i].State);
+                    }
+                    break;
+            }
+
+        }
     }
 }
