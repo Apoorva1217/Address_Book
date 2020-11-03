@@ -39,6 +39,7 @@ namespace Address_Book
         public string ZipCode { get => this.zipCode; set => this.zipCode = value; }
         public string PhoneNumber { get => this.phoneNumber; set => this.phoneNumber = value; }
         public string EmailID { get => this.emailID; set => this.emailID = value; }
+        public int Count { get; internal set; }
 
         public override string ToString()
         {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -301,6 +302,39 @@ namespace Address_Book
                     {
                         Console.WriteLine(personal_Details);
                     }
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// Ability to Count person in a City or State
+        /// </summary>
+        public void Count()
+        {
+            int count = 0;
+            Console.WriteLine("Enter your Choice for Count Person by:");
+            Console.WriteLine("1. City 2. State");
+            String choice = Console.ReadLine();
+            int choice1 = Convert.ToInt32(choice);
+            switch (choice1)
+            {
+                case 1:
+                    Console.WriteLine("Enter your City");
+                    String city = Console.ReadLine();
+                    foreach (Personal_Details personal_Details in list.FindAll(c => c.City == city))
+                    {
+                        count = list.Count();
+                    }
+                    Console.WriteLine(count);
+                    break;
+                case 2:
+                    Console.WriteLine("Enter your State");
+                    String state = Console.ReadLine();
+                    foreach (Personal_Details personal_Details in list.FindAll(c => c.State == state))
+                    {
+                        count = list.Count();
+                    }
+                    Console.WriteLine(count);
                     break;
             }
         }

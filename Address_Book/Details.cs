@@ -37,5 +37,10 @@ namespace Address_Book
         /// View Method.
         /// </summary>
         public void View();
+
+        /// <summary>
+        /// Count by City or State
+        /// </summary>
+        public void Count();
     }
 }
