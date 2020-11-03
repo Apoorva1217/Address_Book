@@ -121,5 +121,21 @@ namespace Address_Book
                 }
             }
         }
+
+        /// <summary>
+        /// Ability to Delete contact using Person's first name
+        /// </summary>
+        /// <param name="firstName">first name.</param>
+        public void Delete(string firstName)
+        {
+            for (int i = 0; i < this.list.Count; i++)
+            {
+                if (this.list[i].FirstName.Equals(firstName))
+                {
+                    this.list[i] = null;
+                }
+            }
+            Console.WriteLine("Your expected entry is deleted from records!");
+        }
     }
 }
