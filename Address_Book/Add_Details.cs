@@ -105,13 +105,11 @@ namespace Address_Book
         {
             Console.WriteLine("Enter first name");
             string firstName = Console.ReadLine();
-            for (int i = 0; i < this.list.Count; i++)
+            ///Ability to ensure there is no Duplicate Entry of the same Person
+            foreach (Personal_Details personal_Details in list.FindAll(e => e.FirstName == firstName))
             {
-                if (this.list[i].FirstName.Equals(firstName))
-                {
-                    Console.WriteLine("You entered the duplicate name...");
-                    return;
-                }
+                Console.WriteLine("You entered Duplicate Name...");
+                return;
             }
 
             Console.WriteLine("Enter last name");
