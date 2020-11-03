@@ -275,5 +275,34 @@ namespace Address_Book
             }
         }
 
+        /// <summary>
+        /// Ability to View person by City or State
+        /// </summary>
+        public void View()
+        {
+            Console.WriteLine("Enter your Choice for Viewing a Person by:");
+            Console.WriteLine("1. City 2. State");
+            String choice = Console.ReadLine();
+            int choice1 = Convert.ToInt32(choice);
+            switch (choice1)
+            {
+                case 1:
+                    Console.WriteLine("Enter your City");
+                    String city = Console.ReadLine();
+                    foreach (Personal_Details personal_Details in list.FindAll(e => e.City == city))
+                    {
+                        Console.WriteLine(personal_Details);
+                    }
+                    break;
+                case 2:
+                    Console.WriteLine("Enter your State");
+                    String state = Console.ReadLine();
+                    foreach (Personal_Details personal_Details in list.FindAll(e => e.State == state))
+                    {
+                        Console.WriteLine(personal_Details);
+                    }
+                    break;
+            }
+        }
     }
 }

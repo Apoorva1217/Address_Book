@@ -32,5 +32,10 @@ namespace Address_Book
         /// Search Method.
         /// </summary>
         public void Search();
+
+        /// <summary>
+        /// View Method.
+        /// </summary>
+        public void View();
     }
 }
