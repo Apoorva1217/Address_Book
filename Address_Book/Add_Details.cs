@@ -62,5 +62,64 @@ namespace Address_Book
             }
         }
 
+        /// <summary>
+        /// Ability to Edit existing contact using Person's first name
+        /// </summary>
+        /// <param name="firstName">first name.</param>
+        public void Edit(string firstName)
+        {
+            int check = 0;
+            for (int i = 0; i < this.list.Count; i++)
+            {
+                if (this.list[i].FirstName.Equals(firstName))
+                {
+                    while (check == 0)
+                    {
+                        Personal_Details person = this.list[i];
+                        Console.WriteLine(person);
+                        Console.WriteLine("Enter your choice for editing: ");
+                        Console.WriteLine("1.Address 2.City 3.State 4.Zip Code 5.Phone Number 6.Email ID 7.Exit");
+                        string choice = Console.ReadLine();
+                        int ch = Convert.ToInt32(choice);
+                        switch (ch)
+                        {
+                            case 1:
+                                Console.WriteLine("Enter new Address:");
+                                string address = Console.ReadLine();
+                                person.Address = address;
+                                break;
+                            case 2:
+                                Console.WriteLine("Enter new City:");
+                                string city = Console.ReadLine();
+                                person.City = city;
+                                break;
+                            case 3:
+                                Console.WriteLine("Enter new State:");
+                                string state = Console.ReadLine();
+                                person.State = state;
+                                break;
+                            case 4:
+                                Console.WriteLine("Enter new ZipCode:");
+                                string zipCode = Console.ReadLine();
+                                person.ZipCode = zipCode;
+                                break;
+                            case 5:
+                                Console.WriteLine("Enter new Phone Number:");
+                                string phoneNumber = Console.ReadLine();
+                                person.PhoneNumber = phoneNumber;
+                                break;
+                            case 6:
+                                Console.WriteLine("Enter new Email ID:");
+                                string emailID = Console.ReadLine();
+                                person.EmailID = emailID;
+                                break;
+                            case 7:
+                                check = 1;
+                                break;
+                        }
+                    }
+                }
+            }
+        }
     }
 }

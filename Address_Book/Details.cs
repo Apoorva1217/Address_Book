@@ -15,5 +15,11 @@ namespace Address_Book
         /// Display method.
         /// </summary>
         public void Display();
+
+        /// <summary>
+        /// Edit method.
+        /// </summary>
+        /// <param name="firstName">first name.</param>
+        public void Edit(string firstName);
     }
 }
