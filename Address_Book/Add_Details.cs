@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Address_Book
 {
@@ -105,6 +106,9 @@ namespace Address_Book
         {
             Console.WriteLine("Enter first name");
             string firstName = Console.ReadLine();
+            if (!Regex.Match(firstName, "^[A-Z][a-z]{2,}$").Success)
+                Console.WriteLine("First letter should be capital and minimum 3 characters are required\n");
+
             ///Ability to ensure there is no Duplicate Entry of the same Person
             foreach (Personal_Details personal_Details in list.FindAll(e => e.FirstName == firstName))
             {
@@ -114,6 +118,8 @@ namespace Address_Book
 
             Console.WriteLine("Enter last name");
             string lastName = Console.ReadLine();
+            if (!Regex.Match(lastName, "^[A-Z][a-z]{2,}$").Success)
+                Console.WriteLine("First letter should be capital\n");
 
             Console.WriteLine("Enter address");
             string address = Console.ReadLine();
@@ -126,12 +132,25 @@ namespace Address_Book
 
             Console.WriteLine("Enter Zip Code");
             string zipCode = Console.ReadLine();
+            if (!Regex.Match(zipCode, "^[1-9]{3}[0-9]{3}$").Success)
+                Console.WriteLine("Zip Code contains 6 digits\n");
 
             Console.WriteLine("Enter phoneNumber");
             string phoneNumber = Console.ReadLine();
+            if (!Regex.Match(phoneNumber, "^[0-9]{10}").Success)
+                Console.WriteLine("Invalid Phone Number\n");
+
+            ///Duplicate Entries like Phone Number are not Allowed.
+            foreach (Personal_Details personal_Details in list.FindAll(e => e.PhoneNumber == phoneNumber))
+            {
+                Console.WriteLine("You entered Duplicate Phone Number...");
+                return;
+            }
 
             Console.WriteLine("Enter EmailID");
             string emailID = Console.ReadLine();
+            if (!Regex.Match(emailID, "^[0-9a-zA-Z]+([._+-][0-9a-zA-Z]+)*@[0-9a-zA-Z]+[.]+([a-zA-Z]{2,4})+[.]*([a-zA-Z]{2})*$").Success)
+                Console.WriteLine("Invalid Email ID \n");
 
             Console.WriteLine("Your details are Added Successfully...");
 
@@ -225,5 +244,36 @@ namespace Address_Book
             }
             Console.WriteLine("Your expected entry is deleted from records!");
         }
+
+        /// <summary>
+        /// Ability to Search person in City or State
+        /// </summary>
+        public void Search()
+        {
+            Console.WriteLine("Enter your Choice for Searching a Person in");
+            Console.WriteLine("1. City 2. State");
+            String choice = Console.ReadLine();
+            int choice1 = Convert.ToInt32(choice);
+            switch (choice1)
+            {
+                case 1:
+                    Console.WriteLine("Enter your First Name:");
+                    String NameToSearchInCity = Console.ReadLine();
+                    foreach (Personal_Details personal_Details in list.FindAll(e => e.FirstName == NameToSearchInCity))
+                    {
+                        Console.WriteLine("City of " + NameToSearchInCity + " is : " + personal_Details.City);
+                    }
+                    break;
+                case 2:
+                    Console.WriteLine("Enter your First Name:");
+                    String nameToSearchInState = Console.ReadLine();
+                    foreach (Personal_Details personal_Details in list.FindAll(e => e.FirstName == nameToSearchInState))
+                    {
+                        Console.WriteLine("City of " + nameToSearchInState + " is : " + personal_Details.State);
+                    }
+                    break;
+            }
+        }
+
     }
 }
