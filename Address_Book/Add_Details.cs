@@ -12,9 +12,91 @@ namespace Address_Book
         private readonly List<Personal_Details> list = new List<Personal_Details>();
 
         /// <summary>
+        /// Created a Dictionary.
+        /// </summary>
+        Dictionary<string, Add_Details> dictionary = new Dictionary<string, Add_Details>();
+
+        /// <summary>
         /// Assign person equals null. 
         /// </summary>
         private Personal_Details person = null;
+
+        /// <summary>
+        /// Ability to create Multiple Address Books
+        /// </summary>
+        public void CreateMultipleAddressBook()
+        {
+            while (true)
+            {
+                Console.WriteLine("Enter your Choice");
+                Console.WriteLine("1.Add Address Book");
+                Console.WriteLine("2.Exit");
+
+                String choice = Console.ReadLine();
+                int choice1 = Convert.ToInt32(choice);
+                switch (choice1)
+                {
+                    case 1:
+                        Console.WriteLine("Enter the Name of Address Book");
+                        string name = Console.ReadLine();
+                        if (dictionary.ContainsKey(name))
+                        {
+                            Console.WriteLine("Already exists...");
+                        }
+                        else
+                        {
+                            Add_Details addressBook = new Add_Details();
+                            dictionary.Add(name, addressBook);
+                            Console.WriteLine("Address Book is Created...");
+                            addressBook.Menu();
+                        }
+                        break;
+                    case 2:
+                        return;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Address Book Menu
+        /// </summary>
+        public void Menu()
+        {
+            Details details = new Add_Details();
+            bool check = true;
+            while (check == true)
+            {
+                Console.WriteLine("\n---Welcome to Address Book Program!---\n");
+                Console.WriteLine("*Enter Your Choice*");
+                Console.WriteLine("1.Add Details");
+                Console.WriteLine("2.Display Details");
+                Console.WriteLine("3.Edit Details");
+                Console.WriteLine("4.Delete Details");
+
+                string choice = Console.ReadLine();
+                int ch = Convert.ToInt32(choice);
+
+                switch (ch)
+                {
+                    case 1:
+                        details.Add();
+                        break;
+                    case 2:
+                        details.Display();
+                        break;
+                    case 3:
+                        Console.WriteLine("Enter First Name:");
+                        string name = Console.ReadLine();
+                        details.Edit(name);
+                        break;
+                    case 4:
+                        Console.WriteLine("Enter First Name:");
+                        string nameForDeletion = Console.ReadLine();
+                        details.Delete(nameForDeletion);
+                        break;
+                }
+            }
+        }
 
         /// <summary>
         /// Ability to Add new Contact in Address Book
@@ -23,7 +105,15 @@ namespace Address_Book
         {
             Console.WriteLine("Enter first name");
             string firstName = Console.ReadLine();
-           
+            for (int i = 0; i < this.list.Count; i++)
+            {
+                if (this.list[i].FirstName.Equals(firstName))
+                {
+                    Console.WriteLine("You entered the duplicate name...");
+                    return;
+                }
+            }
+
             Console.WriteLine("Enter last name");
             string lastName = Console.ReadLine();
 
