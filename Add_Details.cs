@@ -77,7 +77,7 @@ namespace Address_Book
                 Console.WriteLine("5.Search person in City or State");
                 Console.WriteLine("6.View person by City or State");
                 Console.WriteLine("7.Count person in a City or State");
-                Console.WriteLine("8.Sort Details by Name");
+                Console.WriteLine("8.Sort Details");
                 Console.WriteLine("9.Exit");
 
                 string choice = Console.ReadLine();
@@ -368,14 +368,29 @@ namespace Address_Book
         }
 
         /// <summary>
-        /// Compare First name of person
+        /// Sort deatils by First name, City, State or Zip code
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
         public int Compare(Personal_Details x, Personal_Details y)
         {
-            return x.FirstName.CompareTo(y.FirstName);
+            Console.WriteLine("Enter choice for sorting:");
+            Console.WriteLine("1. FirstName 2. City 3. State 4. ZipCode");
+            String choice = Console.ReadLine();
+            int choice1 = Convert.ToInt32(choice);
+            switch (choice1)
+            {
+                case 1:
+                    return x.FirstName.CompareTo(y.FirstName);
+                case 2:
+                    return x.City.CompareTo(y.City);
+                case 3:
+                    return x.State.CompareTo(y.State);
+                case 4:
+                    return x.ZipCode.CompareTo(y.ZipCode);
+            }
+            return 0;
         }
     }
 }
