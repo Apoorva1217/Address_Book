@@ -47,5 +47,10 @@ namespace Address_Book
         /// sort details by name
         /// </summary>
         public void SortByName();
+
+        /// <summary>
+        /// Write data to file
+        /// </summary>
+        public void WriteUsingStreamWriter();
     }
 }

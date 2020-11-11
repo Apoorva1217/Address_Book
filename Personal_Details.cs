@@ -10,14 +10,14 @@ namespace Address_Book
         /// <summary>
         /// Ability to Create Contacts in Address Book
         /// </summary>
-        private string firstName;
-        private string lastName;
-        private string address;
-        private string city;
-        private string state;
-        private string zipCode;
-        private string phoneNumber;
-        private string emailID;
+        public  string firstName;
+        public  string lastName;
+        public  string address;
+        public  string city;
+        public  string state;
+        public  string zipCode;
+        public  string phoneNumber;
+        public  string emailID;
 
         public Personal_Details(string firstName, string lastName, string address, string city, string state, string zipCode, string phoneNumber, string emailID)
         {

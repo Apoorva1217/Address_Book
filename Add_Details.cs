@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -11,7 +12,7 @@ namespace Address_Book
         /// <summary>
         /// Created a list.
         /// </summary>
-        private readonly List<Personal_Details> list = new List<Personal_Details>();
+        public  readonly List<Personal_Details> list = new List<Personal_Details>();
 
         /// <summary>
         /// Created a Dictionary.
@@ -78,7 +79,8 @@ namespace Address_Book
                 Console.WriteLine("6.View person by City or State");
                 Console.WriteLine("7.Count person in a City or State");
                 Console.WriteLine("8.Sort Details");
-                Console.WriteLine("9.Exit");
+                Console.WriteLine("9.Write to file");
+                Console.WriteLine("10.Exit");
 
                 string choice = Console.ReadLine();
                 int ch = Convert.ToInt32(choice);
@@ -114,6 +116,9 @@ namespace Address_Book
                         details.SortByName();
                         break;
                     case 9:
+                        details.WriteUsingStreamWriter();
+                        break;
+                    case 10:
                         return;
                 }
             }
@@ -391,6 +396,23 @@ namespace Address_Book
                     return x.ZipCode.CompareTo(y.ZipCode);
             }
             return 0;
+        }
+
+        /// <summary>
+        /// Write data to file using StreamWriter
+        /// </summary>
+        public void WriteUsingStreamWriter()
+        {
+            //Personal_Details c;
+            string path = "c:/Users/HP/source/repos/Address_Book/Address_Book/AddressBook.txt";
+            using (StreamWriter streamWriter = File.AppendText(path))
+            {
+                foreach (Personal_Details entry in this.list)
+                {
+                    streamWriter.WriteLine(entry);
+                }
+            }
+            Console.ReadKey();
         }
     }
 }
