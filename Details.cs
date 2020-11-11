@@ -63,5 +63,10 @@ namespace Address_Book
         /// </summary>
         /// <param name="records"></param>
         public void WriteCSVFile(List<Personal_Details> records);
+
+        /// <summary>
+        /// Read/Write JSON file
+        /// </summary>
+        public void ReadWriteJSON();
     }
 }

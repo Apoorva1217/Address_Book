@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using Newtonsoft.Json;
 
 namespace Address_Book
 {
@@ -84,7 +85,8 @@ namespace Address_Book
                 Console.WriteLine("9.Write to file");
                 Console.WriteLine("10.Read File from CSV file");
                 Console.WriteLine("11.Write data into CSV file");
-                Console.WriteLine("12.Exit");
+                Console.WriteLine("12.Read/Write JSON file");
+                Console.WriteLine("13.Exit");
 
                 string choice = Console.ReadLine();
                 int ch = Convert.ToInt32(choice);
@@ -129,6 +131,9 @@ namespace Address_Book
                         details.WriteCSVFile(list);
                         break;
                     case 12:
+                        details.ReadWriteJSON();
+                        break;
+                    case 13:
                         return;
                 }
             }
@@ -462,6 +467,30 @@ namespace Address_Book
             {
                 CSVwrite.WriteRecords(records);
             }
-        }   
+        }
+
+        /// <summary>
+        /// Read/Write JSON file
+        /// </summary>
+        public void ReadWriteJSON()
+        {
+            string importfilepath = "c:/Users/HP/source/repos/Address_Book/Address_Book/AddressBook.csv";
+            string exportfilepath = "c:/Users/HP/source/repos/Address_Book/Address_Book/AddressBook.json";
+
+            ///reading from csv file
+            using (var reader = new StreamReader(importfilepath))
+            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+            {
+                var records = csv.GetRecords<Personal_Details>().ToList();
+
+                ///write into json file
+                JsonSerializer jsonSerializer = new JsonSerializer();
+                using (StreamWriter streamWriter = new StreamWriter(exportfilepath))
+                using (JsonWriter jsonWriter = new JsonTextWriter(streamWriter))
+                {
+                    jsonSerializer.Serialize(jsonWriter, records);
+                }
+            }
+        }
     }
 }
