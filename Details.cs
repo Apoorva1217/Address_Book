@@ -52,5 +52,16 @@ namespace Address_Book
         /// Write data to file
         /// </summary>
         public void WriteUsingStreamWriter();
+
+        /// <summary>
+        /// Read CSV file
+        /// </summary>
+        public void ReadCSVFile();
+
+        /// <summary>
+        /// Write CSV file
+        /// </summary>
+        /// <param name="records"></param>
+        public void WriteCSVFile(List<Personal_Details> records);
     }
 }

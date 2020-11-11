@@ -1,5 +1,7 @@
-﻿using System;
+﻿using CsvHelper;
+using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -80,7 +82,9 @@ namespace Address_Book
                 Console.WriteLine("7.Count person in a City or State");
                 Console.WriteLine("8.Sort Details");
                 Console.WriteLine("9.Write to file");
-                Console.WriteLine("10.Exit");
+                Console.WriteLine("10.Read File from CSV file");
+                Console.WriteLine("11.Write data into CSV file");
+                Console.WriteLine("12.Exit");
 
                 string choice = Console.ReadLine();
                 int ch = Convert.ToInt32(choice);
@@ -119,6 +123,12 @@ namespace Address_Book
                         details.WriteUsingStreamWriter();
                         break;
                     case 10:
+                        details.ReadCSVFile();
+                        break;
+                    case 11:
+                        details.WriteCSVFile(list);
+                        break;
+                    case 12:
                         return;
                 }
             }
@@ -403,7 +413,6 @@ namespace Address_Book
         /// </summary>
         public void WriteUsingStreamWriter()
         {
-            //Personal_Details c;
             string path = "c:/Users/HP/source/repos/Address_Book/Address_Book/AddressBook.txt";
             using (StreamWriter streamWriter = File.AppendText(path))
             {
@@ -414,5 +423,45 @@ namespace Address_Book
             }
             Console.ReadKey();
         }
+
+        /// <summary>
+        /// Read data into CSV file
+        /// </summary>
+        public void ReadCSVFile()
+        {
+            string filepath = "c:/Users/HP/source/repos/Address_Book/Address_Book/AddressBook.csv";
+            using (var reader = new StreamReader(filepath))
+            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+            {
+                var records = csv.GetRecords<Personal_Details>().ToList();
+
+                foreach (Personal_Details personal_Details in records)
+                {
+                    Console.WriteLine("\t" + personal_Details.firstName);
+                    Console.WriteLine("\t" + personal_Details.lastName);
+                    Console.WriteLine("\t" + personal_Details.address);
+                    Console.WriteLine("\t" + personal_Details.city);
+                    Console.WriteLine("\t" + personal_Details.state);
+                    Console.WriteLine("\t" + personal_Details.zipCode);
+                    Console.WriteLine("\t" + personal_Details.phoneNumber);
+                    Console.WriteLine("\t" + personal_Details.emailID);
+                    Console.WriteLine("\n");
+                }
+            }
+        }
+
+        /// <summary>
+        /// Write data into CSV file
+        /// </summary>
+        /// <param name="records"></param>
+        public void WriteCSVFile(List<Personal_Details> records)
+        {
+            string filepath = "c:/Users/HP/source/repos/Address_Book/Address_Book/AddressBook.csv";
+            using (var writer = new StreamWriter(filepath))
+            using (var CSVwrite = new CsvWriter(writer, CultureInfo.InvariantCulture))
+            {
+                CSVwrite.WriteRecords(records);
+            }
+        }   
     }
 }
